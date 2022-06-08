@@ -14,8 +14,6 @@ jobs:
       matrix:
         python: ["3.5", "3.6", "3.7"]
 
-    env:
-      SHIPPO_API_KEY: ${{ secrets.SHIPPO_API_KEY }}
     steps:
       - uses: actions/checkout@v3
       - name: Setup Python
@@ -25,5 +23,7 @@ jobs:
       - name: Install tox and any other packages
         run: pip install tox
       - name: Run tox
+        env:
+          SHIPPO_API_KEY: ${{ secrets.SHIPPO_API_KEY }}
         # Run tox using the version of Python in `PATH`
         run: tox -e py
