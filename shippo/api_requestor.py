@@ -93,6 +93,9 @@ class APIRequestor(object):
         from shippo.config import app_name
         from shippo.config import app_version
 
+        if app_name == '':
+            app_name = 'PythonCommunitySDK'
+
         if app_version == '':
             app_version = VERSION
 
