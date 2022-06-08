@@ -147,6 +147,8 @@ class APIRequestor(object):
             'Authorization': '%s %s' % (token_type, my_api_key,)
         }
 
+        print(f'Used test token: *****{my_api_key[-5:]}')
+
         if api_version is not None:
             headers['Shippo-API-Version'] = api_version
 
