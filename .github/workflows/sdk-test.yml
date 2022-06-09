@@ -23,6 +23,4 @@ jobs:
       - name: Install tox
         run: pip install tox
       - name: Run the tests
-        env:
-          SHIPPO_API_KEY: ${{ secrets.SHIPPO_TEST_KEY }}
         run: tox -e py
