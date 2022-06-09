@@ -20,12 +20,9 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python }}
-      - name: Print test secret
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        run: |
-          python -c "import os;print(os.environ.get('SLACK_WEBHOOK_URL') == 'TEST')"
       - name: Install tox
         run: pip install tox
       - name: Run the tests
+        env:
+          SHIPPO_API_KEY: ${{ secrets.SHIPPO_TEST_KEY }}
         run: tox -e py
