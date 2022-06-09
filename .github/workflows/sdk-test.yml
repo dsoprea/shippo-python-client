@@ -20,11 +20,9 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python }}
-      - name: Install dependencies
-        run: pip install -e .
-      - name: Install test dependencies
-        run: pip install pytest unittest2 vcrpy mock
+      - name: Install tox
+        run: pip install tox
       - name: Run the tests
         env:
           SHIPPO_API_KEY: ${{ secrets.SHIPPO_TEST_KEY }}
-        run: pytest -v
+        run: tox -e py
