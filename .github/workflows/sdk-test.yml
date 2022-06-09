@@ -26,3 +26,10 @@ jobs:
         env:
           SHIPPO_API_KEY: ${{ secrets.SHIPPO_TEST_KEY }}
         run: tox -e py
+      - name: Send a Slack notification if all tests are passing
+        shell: bash
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          message="Python SDK Test succeeded for Python ${{ matrix.python }}"
+          curl -X POST --data-urlencode "payload={\"text\": \"$message\", \"link_names\": 1}" $SLACK_WEBHOOK_URL
