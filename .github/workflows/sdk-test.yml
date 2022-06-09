@@ -20,6 +20,11 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python }}
+      - name: Print test secret
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          echo $SLACK_WEBHOOK_URL
       - name: Install tox
         run: pip install tox
       - name: Run the tests
