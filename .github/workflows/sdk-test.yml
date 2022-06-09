@@ -22,8 +22,8 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Install dependencies
         run: pip install -e .
-      - name: Install pytest
-        run: pip install pytest
+      - name: Install test dependencies
+        run: pip install pytest unittest2 vcrpy mock
       - name: Run the tests
         env:
           SHIPPO_API_KEY: ${{ secrets.SHIPPO_TEST_KEY }}
