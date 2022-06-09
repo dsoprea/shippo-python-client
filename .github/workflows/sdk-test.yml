@@ -24,7 +24,7 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-          python -c "import os;print(os.environ.get('SLACK_WEBHOOK_URL'))"
+          python -c "import os;print(os.environ.get('SLACK_WEBHOOK_URL') == 'TEST')"
       - name: Install tox
         run: pip install tox
       - name: Run the tests
