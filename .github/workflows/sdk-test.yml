@@ -1,4 +1,4 @@
-name: SDK Test
+name: Python SDK Test
 
 on:
   push:
